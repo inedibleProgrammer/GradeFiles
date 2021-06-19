@@ -1,0 +1,31 @@
+@startuml
+
+autoactivate on
+autonumber
+
+participant Program
+participant "gradeFiles : GradeFiles" as gradeFiles
+participant "abbreviationManager : AbbreviationManager" as abbreviationManager
+
+
+Program -> Program : Main()
+    Program -> gradeFiles ** : new(args)
+
+    Program -> gradeFiles : Run()
+        gradeFiles -> abbreviationManager : IsValid(args)
+        return isValid
+
+        alt isValid == true
+            gradeFiles -> gradeFiles : NextState()
+            return
+        else isValid == false
+            gradeFiles -> abbreviationManager : GetAbbreviationFromSource(s)
+                abbreviationManager -> "s : ISource" : GetInput
+                return
+            return
+        end
+    return
+return
+
+
+@enduml
