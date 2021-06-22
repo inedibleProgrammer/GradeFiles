@@ -16,6 +16,7 @@
     - [Summary Files](#summary-files)
   - [Notes](#notes)
     - [11 April 2021](#11-april-2021)
+    - [19 June 2021](#19-june-2021)
 
 
 
@@ -88,9 +89,8 @@ http://anh.cs.luc.edu/170/notes/CSharpHtml/homework-gradecalculation2.html
 
 ### 11 April 2021
 
-* GradeFiles.cs
-  * Should this be a static class or an instantiable class?
-    * I'm going to make it a static class
+### 19 June 2021
+
 
 
 

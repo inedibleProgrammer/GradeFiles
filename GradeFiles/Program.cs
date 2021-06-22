@@ -6,7 +6,9 @@ namespace GradeFiles
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var gradeFiles = new GradeFiles();
+
+            gradeFiles.Run(args[1]);
         }
     }
 }

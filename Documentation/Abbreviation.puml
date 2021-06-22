@@ -5,7 +5,7 @@ autonumber
 
 participant Program
 participant "gradeFiles : GradeFiles" as gradeFiles
-participant "abbreviationManager : AbbreviationManager" as abbreviationManager
+participant "classAbbreviation : ClassAbbreviation" as classAbbreviation
 
 
 Program -> Program : Main()
