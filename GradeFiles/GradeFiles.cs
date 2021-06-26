@@ -4,26 +4,29 @@ namespace GradeFiles
 {
     public class GradeFiles
     {
-        private enum GradeFileState
+        public enum GradeFilesState
         {
             GetAbbreviation,
             CategoriesFile,
             Finished,
         }
 
-        private GradeFileState m_currentState;
+        private readonly IUserInput m_userInput;
+
+        private GradeFilesState m_currentState;
         private String m_validAbbreviation;
 
-        public GradeFiles()
+        public GradeFiles(IUserInput userInput)
         {
+            m_userInput = userInput;
         }
 
         public void Run(String commandLineAbbreviation)
         {
             switch(m_currentState)
             {
-                case GradeFileState.GetAbbreviation:
-                    GetAbbreviation(commandLineAbbreviation);
+                case GradeFilesState.GetAbbreviation:
+                    getAbbreviation(commandLineAbbreviation);
                     break;
                 default:
                     // Something bad happened
@@ -31,7 +34,7 @@ namespace GradeFiles
             }
         }
 
-        public void GetAbbreviation(String commandLineAbbreviation)
+        private void getAbbreviation(String commandLineAbbreviation)
         {
             ClassAbbreviation classAbbreviation = new ClassAbbreviation();
             m_validAbbreviation = String.Empty;

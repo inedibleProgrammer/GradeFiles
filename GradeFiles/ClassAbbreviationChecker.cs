@@ -1,22 +1,10 @@
 using System;
 
-
 namespace GradeFiles
 {
-
-    /* I didn't like this class so I replaced it with ClassAbbreviationChecker */
-    public class ClassAbbreviation
+    public static class ClassAbbreviationChecker
     {
-        public ClassAbbreviation()
-        {
-
-        }
-
-        /*
-            An abbreviation is considered invalid if it
-            contains special characters
-        */
-        public bool IsValid(String abbreviation)
+        public static bool IsValid(String abbreviation)
         {
             if(abbreviation == String.Empty)
             {
@@ -41,15 +29,6 @@ namespace GradeFiles
             }
 
             return isValid;
-        }
-
-        public String GetUserInput()
-        {
-            String userInput = String.Empty;
-
-            userInput = Console.ReadLine();
-
-            return userInput;
         }
     }
 }

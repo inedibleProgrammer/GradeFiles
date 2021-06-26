@@ -6,9 +6,17 @@ namespace GradeFiles
     {
         static void Main(string[] args)
         {
-            var gradeFiles = new GradeFiles();
+            ConsoleUserInput consoleUserInput = new ConsoleUserInput();
+            var gradeFiles = new GradeFiles(consoleUserInput);
 
-            gradeFiles.Run(args[1]);
+            if(args.Length > 1)
+            {
+                gradeFiles.Run(args[1]);
+            }
+            else
+            {
+                gradeFiles.Run(null);
+            }
         }
     }
 }
