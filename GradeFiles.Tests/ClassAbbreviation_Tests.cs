@@ -44,7 +44,5 @@ namespace GradeFiles.Tests
 
             Assert.False(classAbbreviation.IsValid(null));
         }
-
-
     }
 }

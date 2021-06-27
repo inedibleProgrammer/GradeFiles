@@ -13,7 +13,7 @@ namespace GradeFiles
 
         private readonly IUserInput m_userInput;
 
-        private GradeFilesState m_currentState;
+        public GradeFilesState CurrentState {get; private set;}
         private String m_validAbbreviation;
 
         public GradeFiles(IUserInput userInput)
@@ -23,7 +23,7 @@ namespace GradeFiles
 
         public void Run(String commandLineAbbreviation)
         {
-            switch(m_currentState)
+            switch(CurrentState)
             {
                 case GradeFilesState.GetAbbreviation:
                     getAbbreviation(commandLineAbbreviation);
@@ -36,18 +36,17 @@ namespace GradeFiles
 
         private void getAbbreviation(String commandLineAbbreviation)
         {
-            ClassAbbreviation classAbbreviation = new ClassAbbreviation();
             m_validAbbreviation = String.Empty;
 
-            if (!classAbbreviation.IsValid(commandLineAbbreviation))
+            if (!ClassAbbreviationChecker.IsValid(commandLineAbbreviation))
             {
                 String userInputAbbreviation = String.Empty;
 
-                while(!classAbbreviation.IsValid(userInputAbbreviation))
+                while(!ClassAbbreviationChecker.IsValid(userInputAbbreviation))
                 {
                     Console.WriteLine("Please enter a valid class abbreviation. Enter Q to quit");
 
-                    userInputAbbreviation = classAbbreviation.GetUserInput();
+                    userInputAbbreviation = m_userInput.GetUserInput();
                 }
 
                 m_validAbbreviation = userInputAbbreviation;
@@ -59,11 +58,11 @@ namespace GradeFiles
 
             if(m_validAbbreviation == "Q" || m_validAbbreviation == "q")
             {
-                m_currentState = GradeFileState.Finished;
+                CurrentState = GradeFilesState.Finished;
             }
             else
             {
-                m_currentState = GradeFileState.CategoriesFile;
+                CurrentState = GradeFilesState.CategoriesFile;
             }
         }
 

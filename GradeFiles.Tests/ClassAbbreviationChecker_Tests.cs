@@ -22,7 +22,7 @@ namespace GradeFiles.Tests
         {
             String abbreviation = new String("Comp*170");
             
-            Assert.True(ClassAbbreviationChecker.IsValid(abbreviation));
+            Assert.False(ClassAbbreviationChecker.IsValid(abbreviation));
         }
 
 
